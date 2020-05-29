@@ -3,9 +3,10 @@
 namespace SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SliderType extends AbstractType
 {
@@ -17,7 +18,10 @@ class SliderType extends AbstractType
         $view->vars['configs'] = $options;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'min' => 0,
@@ -39,13 +43,13 @@ class SliderType extends AbstractType
      */
     public function getParent()
     {
-        return 'integer';
+        return IntegerType::class;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'genemu_jqueryslider';
     }

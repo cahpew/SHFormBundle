@@ -2,9 +2,9 @@
 
 namespace SymfonyHackers\Bundle\FormBundle\Form\Core\DataTransformer;
 
+use Symfony\Component\Form\ChoiceList\ChoiceListInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
-use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceListInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
 class ChoiceToJsonTransformer implements DataTransformerInterface

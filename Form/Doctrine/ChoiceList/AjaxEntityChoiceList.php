@@ -2,7 +2,7 @@
 
 namespace SymfonyHackers\Bundle\FormBundle\Form\Doctrine\ChoiceList;
 
-use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList;
+use Symfony\Bridge\Doctrine\Form\ChoiceList\DoctrineChoiceLoader;
 use Symfony\Component\PropertyAccess\PropertyPath;
 use Symfony\Bridge\Doctrine\Form\ChoiceList\ORMQueryBuilderLoader;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -14,7 +14,7 @@ use Doctrine\Common\Persistence\ObjectManager;
  *
  * @author Olivier Chauvel <olivier@generation-multiple.com>
  */
-class AjaxEntityChoiceList extends EntityChoiceList
+class AjaxEntityChoiceList extends DoctrineChoiceLoader
 {
     private $ajax;
     private $propertyPath;

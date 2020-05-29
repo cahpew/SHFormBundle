@@ -22,11 +22,11 @@ class SHFormExtension extends Extension
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $configs = $this->processConfiguration(new Configuration(), $configs);
+        $container->setParameter('genemu.form.select2.configs', $configs['select2']['configs']);
 
         $loader->load('twig.xml');
         $loader->load('imagine.xml');
         $loader->load('form.xml');
-        $loader->load('model.xml');
         $loader->load('jquery.xml');
 
         if (!empty($configs['autocompleter']['doctrine']) ||
@@ -41,7 +41,7 @@ class SHFormExtension extends Extension
             $loader->load('mongodb.xml');
         }
 
-        foreach (array('captcha', 'recaptcha', 'tinymce', 'date', 'file', 'image', 'autocomplete', 'select2') as $type) {
+        foreach (array('captcha', 'recaptcha', 'tinymce', 'date', 'file', 'image', 'autocomplete', 'select2Entity', 'select2Choice', 'select2Hidden') as $type) {
             if (isset($configs[$type]) && !empty($configs[$type]['enabled'])) {
                 $method = 'register' . ucfirst($type) . 'Configuration';
 
@@ -234,21 +234,6 @@ class SHFormExtension extends Extension
         $container->setDefinition($serviceId . '.document', $mongoDef);
 
 
-    }
-
-    private function registerSelect2Configuration(array $configs, ContainerBuilder $container)
-    {
-        $serviceId = 'genemu.form.jquery.type.select2';
-        foreach (array_merge($this->getChoiceTypeNames(), array('hidden')) as $type) {
-            $typeDef = new DefinitionDecorator($serviceId);
-            $typeDef
-                ->addArgument($type)
-                ->addArgument($configs['configs'])
-                ->addTag('form.type', array('alias' => 'genemu_jqueryselect2_'.$type))
-            ;
-
-            $container->setDefinition($serviceId.'.'.$type, $typeDef);
-        }
     }
 
     /**

@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use SymfonyHackers\Bundle\FormBundle\Form\Core\EventListener\FileListener;
@@ -59,7 +60,7 @@ class FileType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $configs = $this->options;
 
@@ -70,15 +71,14 @@ class FileType extends AbstractType
                 'multiple' => false,
                 'configs' => array(),
             ))
-            ->setNormalizers(array(
-                'configs' => function (Options $options, $value) use ($configs) {
+            ->setNormalizer('configs', function (Options $options, $value) use ($configs) {
                     if (!$options['multiple']) {
                         $value['multi'] = false;
                     }
 
                     return array_merge($configs, $value);
                 }
-            ))
+            )
         ;
     }
 
@@ -93,7 +93,7 @@ class FileType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'genemu_jqueryfile';
     }

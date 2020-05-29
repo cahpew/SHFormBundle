@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * ChosenType to JQueryLib
@@ -32,7 +32,7 @@ class ChosenType extends AbstractType
         // Adds a custom block prefix
         array_splice(
             $view->vars['block_prefixes'],
-            array_search($this->getName(), $view->vars['block_prefixes']),
+            array_search($this->getBlockPrefix(), $view->vars['block_prefixes']),
             0,
             'genemu_jquerychosen'
         );
@@ -41,7 +41,7 @@ class ChosenType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver
             ->setDefaults(array(
@@ -49,11 +49,12 @@ class ChosenType extends AbstractType
                 'allow_single_deselect' => true,
                 'disable_search_threshold' => 0
             ))
-            ->setNormalizers(array(
-                'expanded' => function (Options $options) {
+            ->setNormalizer(
+                'expanded',
+                function (Options $options) {
                     return false;
                 }
-            ))
+            )
         ;
     }
 
@@ -68,7 +69,7 @@ class ChosenType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'genemu_jquerychosen_' . $this->widget;
     }

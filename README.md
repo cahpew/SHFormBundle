@@ -6,8 +6,6 @@ This package is a fork of [GenemuFormBundle](https://github.com/genemu/GenemuFor
 
 *If you want to migrate from GenemuFormBundle to SHFormBundle follow [this document](MIGRATE-FROM-GENEMU.md).*
 
-[![Build Status](https://travis-ci.org/symfony-hackers/SHFormBundle.svg?branch=master)](https://travis-ci.org/symfony-hackers/SHFormBundle)
-
 ## Installation
 
 Installation is quick and easy, 3 steps process
@@ -21,7 +19,7 @@ Installation is quick and easy, 3 steps process
 Run the following command :
 
 ``` bash
-$ composer require symfony-hackers/form-bundle "^3.0@dev"
+$ composer require folliked/form-bundle "^3.0@dev"
 ```
 
 ### Step 2: Enable the bundle

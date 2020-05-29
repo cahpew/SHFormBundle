@@ -4,9 +4,9 @@ namespace SymfonyHackers\Bundle\FormBundle\Form\Doctrine\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use SymfonyHackers\Bundle\FormBundle\Form\Doctrine\ChoiceList\AjaxEntityChoiceList;
 use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class AjaxDocumentType extends AbstractType
 {
@@ -22,10 +22,10 @@ class AjaxDocumentType extends AbstractType
         $this->registry = $registry;
     }
 
-        /**
+    /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'document_manager' => null,

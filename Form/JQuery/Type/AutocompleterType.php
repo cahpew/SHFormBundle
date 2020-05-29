@@ -7,8 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use SymfonyHackers\Bundle\FormBundle\Form\Core\ChoiceList\AjaxSimpleChoiceList;
 use SymfonyHackers\Bundle\FormBundle\Form\Core\DataTransformer\ChoiceToJsonTransformer;
 
@@ -61,7 +60,7 @@ class AutocompleterType extends AbstractType
         // Adds a custom block prefix
         array_splice(
             $view->vars['block_prefixes'],
-            array_search($this->getName(), $view->vars['block_prefixes']),
+            array_search($this->getBlockPrefix(), $view->vars['block_prefixes']),
             0,
             'genemu_jqueryautocompleter'
         );
@@ -70,7 +69,7 @@ class AutocompleterType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $widget = $this->widget;
 
@@ -116,7 +115,7 @@ class AutocompleterType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'genemu_jqueryautocompleter_' . $this->widget;
     }

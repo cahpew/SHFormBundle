@@ -23,7 +23,39 @@
         <service id="genemu.form.jquery.type.autocompleter" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\AutocompleterType" abstract="true" />
         <service id="genemu.form.jquery.type.autocomplete" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\AutocompleteType" abstract="true" />
         <service id="genemu.form.jquery.type.chosen" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\ChosenType" abstract="true" />
-        <service id="genemu.form.jquery.type.select2" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2Type" abstract="true" />
+
+        <service id="genemu.form.jquery.type.select2choice" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2ChoiceType">
+            <argument>%genemu.form.select2.configs%</argument>
+            <tag name="form.type" />
+        </service>
+        <service id="genemu.form.jquery.type.select2country" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2CountryType">
+            <argument>%genemu.form.select2.configs%</argument>
+            <tag name="form.type" />
+        </service>
+        <service id="genemu.form.jquery.type.select2currency" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2CurrencyType">
+            <argument>%genemu.form.select2.configs%</argument>
+            <tag name="form.type" />
+        </service>
+        <service id="genemu.form.jquery.type.select2entity" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2EntityType">
+            <argument>%genemu.form.select2.configs%</argument>
+            <tag name="form.type" />
+        </service>
+        <service id="genemu.form.jquery.type.select2hidden" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2HiddenType">
+            <argument>%genemu.form.select2.configs%</argument>
+            <tag name="form.type" />
+        </service>
+        <service id="genemu.form.jquery.type.select2language" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2LanguageType">
+            <argument>%genemu.form.select2.configs%</argument>
+            <tag name="form.type" />
+        </service>
+        <service id="genemu.form.jquery.type.select2locale" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2LocaleType">
+            <argument>%genemu.form.select2.configs%</argument>
+            <tag name="form.type" />
+        </service>
+        <service id="genemu.form.jquery.type.select2timezone" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\Select2TimeZoneType">
+            <argument>%genemu.form.select2.configs%</argument>
+            <tag name="form.type" />
+        </service>
 
         <service id="genemu.form.jquery.type.color" class="SymfonyHackers\Bundle\FormBundle\Form\JQuery\Type\ColorType">
             <tag name="form.type" alias="genemu_jquerycolor" />
