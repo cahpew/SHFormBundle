@@ -7,7 +7,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType as BaseDateType;
 
 class DateType extends AbstractType
@@ -92,7 +91,7 @@ class DateType extends AbstractType
      */
     public function getParent()
     {
-        return DateType::class;
+        return BaseDateType::class;
     }
 
     /**
